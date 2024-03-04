@@ -16,7 +16,6 @@ export default function TodoItem({
     <>
       <motion.li
         whileHover={{ scale: 1.1 }}
-        // whileTap={{ scale: 0.9 }}
         className={`todo-item ${completed ? "completed" : ""}`}
         style={{
           backgroundColor: completed ? type.bgColorCompleted : type.bgColor,
@@ -60,8 +59,11 @@ export default function TodoItem({
 }
 
 TodoItem.propTypes = {
+  id: PropTypes.string,
   type: PropTypes.object,
   todoText: PropTypes.string,
   todoDescription: PropTypes.string,
   completed: PropTypes.bool,
+  updateCompleted:PropTypes.func,
+  removeById:PropTypes.func,
 };

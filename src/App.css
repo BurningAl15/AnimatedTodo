@@ -6,6 +6,11 @@
   text-align: center;
   min-height: 100vh;
   --accent: azure;
+  --skeleton: linear-gradient(
+    90deg,
+    rgba(250, 250, 250, 1),
+    rgb(200, 199, 199)
+  );
 }
 
 .todo-item {
@@ -114,6 +119,14 @@
 .todo-list-container {
   max-width: 100%;
   min-width: 100%;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
 }
 
 .todo-list-content {
@@ -236,4 +249,59 @@ svg {
   width: 100%;
   padding: 8px 16px;
   border-radius: 10px;
+}
+
+.todo-skeleton-icon {
+  display: flex;
+
+  border-radius: 50%;
+  color: transparent;
+  background: var(--skeleton);
+  background-size: 400% 400%;
+  animation: loadingAnimation 3s ease-in-out infinite;
+}
+
+.todo-skeleton-icon-size {
+  margin: 10px auto;
+  max-width: 40px;
+  width: 100%;
+  min-width: 40px;
+  height: 40px;
+  min-height: 40px;
+  max-height: 40px;
+}
+
+.todo-icon-skeleton-l {
+  max-width: 100%;
+  width: fit-content;
+  border-radius: 20px;
+  height: fit-content;
+  color: transparent;
+  background: var(--skeleton);
+  background-size: 400% 400%;
+  animation: loadingAnimation 3s ease-in-out infinite;
+  margin-bottom: 3px;
+}
+
+.todo-icon-skeleton-m {
+  max-width: 100%;
+  width: fit-content;
+  border-radius: 20px;
+  height: fit-content;
+  color: transparent;
+  background: var(--skeleton);
+  background-size: 400% 400%;
+  animation: loadingAnimation 3s ease-in-out infinite;
+}
+
+@keyframes loadingAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

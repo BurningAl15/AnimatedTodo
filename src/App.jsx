@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import { TodoList, CreateTodoButton } from "./components/";
+import { TodoList } from "./components/";
 // import uniqueId from "lodash/uniqueId";
 import { useLocalStorage } from "./customHook/useLocalStorage";
 
@@ -43,15 +43,18 @@ const defaultTodos = [
 ];
 
 function App() {
-  const [todos, saveTodos] = useLocalStorage("todos", defaultTodos);
+  const [todos, saveTodos, loading, error] = useLocalStorage(
+    "todos",
+    defaultTodos
+  );
   const [search, setSearch] = useState("");
 
-  const createNewTodo = (newTodo) => {
-    // const _uniqueId = uniqueId("todo-");
-    // newTodo.id = _uniqueId;
-    const updatedTodos = [...todos, newTodo];
-    saveTodos(updatedTodos);
-  };
+  // const createNewTodo = (newTodo) => {
+  //   // const _uniqueId = uniqueId("todo-");
+  //   // newTodo.id = _uniqueId;
+  //   const updatedTodos = [...todos, newTodo];
+  //   saveTodos(updatedTodos);
+  // };
 
   const updateCompleted = (id) => {
     const updatedTodos = todos.map((item) => {
@@ -76,9 +79,11 @@ function App() {
         search={search}
         setSearch={setSearch}
         removeById={removeById}
+        loading={loading}
+        error={error}
+        openPortal={openPortal}
       />
 
-      <CreateTodoButton onClick={openPortal} />
     </>
   );
 }
